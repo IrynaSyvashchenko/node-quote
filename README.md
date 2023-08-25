@@ -24,7 +24,7 @@ Fork this repository and read this file. This document outlines all of this task
 
 - Open Postman app
 - run `npm install` and `npm start` in your folder
-- use `http://localhost:5000` as URL in the Postman
+- use `http://localhost:5000/quotes/random` as URL in the Postman
 
 ## Level 1 Challenge - make the quote server
 
