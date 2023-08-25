@@ -26,6 +26,13 @@ app.get("/quotes", function (request, response) {
 app.get("/quotes/random", function (request, response) {
   response.send(pickFromArray(quotes));
 });
+
+app.get('/quotes/search', (req, res) => {
+  const searchItem = req.query.term.toLowerCase()
+  const searchResults = quotes.filter(quote => quote.quote.toLowerCase().includes(searchItem));
+      res.send(searchResults)
+  });
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
