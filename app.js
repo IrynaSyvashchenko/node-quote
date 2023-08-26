@@ -1,4 +1,8 @@
 const { response } = require("express");
+
+const lodash = require('lodash');
+
+const cors = require('cors')
 // server.js
 // This is where your node app starts
 
@@ -9,6 +13,7 @@ const fs = require('fs')
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
+app.use(cors())
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
@@ -21,10 +26,10 @@ app.get("/", function (request, response) {
 //START OF YOUR CODE...
 
 app.get("/quotes", function (request, response) {
-  response.send((quotes.map(quote => quote)));
+  response.send(quotes);
 }); 
 app.get("/quotes/random", function (request, response) {
-  response.send(pickFromArray(quotes));
+  response.send(lodash.sample(quotes));
 });
 
 app.get('/quotes/search', (req, res) => {
@@ -32,6 +37,8 @@ app.get('/quotes/search', (req, res) => {
   const searchResults = quotes.filter(quote => quote.quote.toLowerCase().includes(searchItem));
       res.send(searchResults)
   });
+
+ 
 
 //...END OF YOUR CODE
 
