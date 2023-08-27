@@ -36,3 +36,10 @@ button {
   border-radius: 5px;
   padding: 5px;
 }
+
+@media screen and (max-width: 600px) {
+  .main {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
