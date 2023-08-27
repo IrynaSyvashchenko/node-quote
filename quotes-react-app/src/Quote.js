@@ -1,14 +1,18 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import { generateNewQuote } from "./Utils";
 
-function Quote() {
-    const [quotesData, setQuotesData] = useState({quote: "Pleceholder"});
-    useEffect(() => {
-fetch (`https://friendly-space-tribble-5wg6jqq7r6q27rgx-5000.app.github.dev/quotes`)
-.then(res => res.json())
-.then((data) => {
-    setQuotesData(data);
-    console.log(data);
-  });
-    }, []);
+const Quote = ({quotesData, setQuotesData}) => {
+
+  return (
+    <div>
+      <div className="quote">
+        <p className='coloms'>❝</p>
+          <p onClick={() => generateNewQuote(setQuotesData)}>{quotesData.quote}</p>
+          </div>
+        <p className='author'>{quotesData.author}</p>
+    </div>
+  );
+
 }
 
+  export default Quote;
